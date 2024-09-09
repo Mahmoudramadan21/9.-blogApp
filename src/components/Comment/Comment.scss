@@ -1,0 +1,26 @@
+.comments-item {
+    padding: 10px;
+    border: 1px solid #5658727d;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.comments-item img {
+    max-height: 100px;
+}
+
+.comment-info .username {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 7px;
+}
+
+.comment-info .comments-body {
+    font-size: 14px;
+    color: var(--clr-grey);
+    font-family: var(--font-family-lora);
+
+}

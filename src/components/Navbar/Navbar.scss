@@ -1,0 +1,93 @@
+header {
+    padding: 30px 0;
+    background-color: var(--clr-purple);
+    color: white;
+}
+
+header .container {
+    display: grid;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+}
+
+header .logo {
+    font-size: 26px;
+}
+
+header .navbar-links ul {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding-right: 20px;
+    position: relative;
+}
+
+header .navbar-links ul a {
+    font-size: 18px;
+    position: relative;
+}
+
+header .navbar-links ul a::after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 1px;
+    left: 50%;
+    bottom: -10px;
+    transform: translate(-50%, 0);
+    background-color: white;
+    transition: 0.4s;
+}
+
+header .navbar-links ul a:hover:after {
+    width: 70%;
+}
+
+header .navbar-links ul::after {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 160%;
+    right: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+    background-color: rgba(255, 255, 255, 0.491);
+}
+
+header .navbar-icons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding-left: 20px;
+}
+
+header .navbar-icons .search-icon {
+    border: none;
+    background-color: unset;
+}
+
+header .navbar-icons .menu-icon {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    header .navbar-icons .menu-icon {
+        display: block;
+    }
+
+    header .navbar-links,
+    header .navbar-icons .search-icon {
+        display: none;
+    }
+
+    header .navbar-icons .menu-icon {
+        border: none;
+        background-color: unset;
+        color: white;
+        text-align: center;
+    }
+
+    header .navbar-icons .menu-icon svg {
+        font-size: 24px;
+    }
+}

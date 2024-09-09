@@ -1,0 +1,29 @@
+.section-title {
+    text-align: center;
+    position: relative;
+    padding: 90px 0;
+}
+
+.section-title h3 {
+    font-size: 40px;
+    font-family: var(--font-family-rubik);
+    font-weight: 500;
+    position: relative;
+}
+
+.section-title .horz-line {
+    width: 120px;
+    height: 5px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.section-title p {
+    margin-top: 32px;
+    max-width: 580px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: var(--font-family-lora);
+    font-size: 17px;
+    letter-spacing: 1px;
+}

@@ -1,0 +1,22 @@
+.paginate-items {
+    margin: 40px;
+}
+
+.paginate-items,
+.paginate-item {
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.paginate-item {
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 600;
+    font-family: var(--font-family-rubik);
+    color: white;
+    background-color: var(--clr-ex-blue);
+}

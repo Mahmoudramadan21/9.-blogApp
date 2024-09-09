@@ -1,0 +1,146 @@
+.blog {
+    padding: 80px 0;
+    display: grid;
+    grid-template-columns: 60% 35%;
+    justify-content: space-between;
+}
+
+.article-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.article-container .article-meta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.article-container .article-meta span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: var(--font-family-rubik);
+    color: var(--clr-grey);
+}
+
+.article-container .article-title {
+    font-size: 28px;
+    color: var(--clr-dark-blue);
+    font-family: var(--font-family-lora);
+}
+
+.article-container .article-text {
+    color: var(--clr-grey);
+    line-height: 1.5;
+    font-size: 17px;
+
+}
+
+.article-container .article-tags #populor-tags {
+    color: var(--clr-grey);
+    font-size: 17px;
+    font-family: var(--font-family-lora);
+}
+
+.article-container .article-tags .tag-items {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.article-container .article-tags .tag-item {
+    padding: 4px 10px 5px 7px;
+    margin-top: 7px;
+    margin-left: 5px;
+    background-color: var(--clr-ex-blue);
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border-radius: 7px;
+    border-radius: 7px;
+    font-family: var(--font-family-rubik);
+}
+
+.author-info {
+    padding: 25px;
+    background-color: #f5f5f5;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.author-info img {
+    max-height: 130px;
+}
+
+.author-info p {
+    color: var(--clr-grey);
+    margin-bottom: 4px;
+}
+
+.comments-section h2 {
+    color: var(--clr-grey);
+    margin: 30px 0 20px;
+}
+
+/* Start Recent News */
+.recent-news h2 {
+    color: var(--clr-grey);
+    margin: 30px 0 20px;
+}
+
+.recent-news .news-items {
+    border: 1px solid #5658725e;
+}
+
+.recent-news .news-item {
+    padding: 15px;
+    color: var(--clr-grey);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.recent-news .news-item .likes {
+    display: flex;
+    align-items: center;
+}
+
+.recent-news .news-item:not(:last-child) {
+    border-bottom: 1px solid #5658725e;
+}
+
+/* End Recent News */
+
+@media (max-width: 992px) {
+    .blog {
+        grid-template-columns: auto;
+        text-align: center;
+    }
+
+    .article-container .article-meta {
+        flex-direction: column;
+    }
+
+    .article-container .article-tags .tag-items {
+        justify-content: center;
+    }
+
+    .author-info {
+        flex-direction: column;
+        text-align: center;
+        font-size: 14px;
+    }
+
+    .comments-item {
+        flex-direction: column;
+    }
+
+    .recent-news .news-item {
+        flex-direction: column;
+        align-items: center;
+    }
+
+}
