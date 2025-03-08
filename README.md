@@ -18,7 +18,7 @@ A responsive blog application built with React, offering users a seamless experi
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/blog-app.git
+   git clone https://github.com/Mahmoudramadan21/9.-blogApp
 
 2. Navigate to the project directory:
    ```bash
@@ -33,4 +33,4 @@ A responsive blog application built with React, offering users a seamless experi
     npm start
 
 ## Live Demo
-  Check out the live version: https://imaginative-douhua-dd06f6.netlify.app
+  Check out the live version: https://blogapp2145.netlify.app/

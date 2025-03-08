@@ -16,32 +16,31 @@ const BlogList = ({ blogs }) => {
 
     return (
         <>
-            <div className="blog-items">
+            <div className="blog-list">
                 {blogs.slice(paginate - 6, paginate).map(blog => {
                     return (
-                        <Link to={`/blog/${blog.id}`}>
-                            <div className="blog-item" key={blog.id}>
-                                <div className='blog-item-title'>{blog.title}</div>
-                                <div className='blog-item-text'>{(blog.body).substring(0, 100)}...</div>
-                                <div className='blog-item-reaction'>
+                        <Link to={`/blog/${blog.id}`} key={blog.id}>
+                            <div className="blog-card">
+                                <div className='blog-card__title'>{blog.title}</div>
+                                <div className='blog-card__excerpt'>{(blog.body).substring(0, 100)}...</div>
+                                <div className='blog-card__reactions'>
                                     <MdAddReaction />
-                                    <span className='reaction-value'>Likes: {blog.reactions.likes}</span>
-                                    <span className='reaction-value'>Dislikes: {blog.reactions.dislikes}</span>
+                                    <span className='reaction__count'>Likes: {blog.reactions.likes}</span>
+                                    <span className='reaction__count'>Dislikes: {blog.reactions.dislikes}</span>
                                 </div>
 
-                                <div className='blog-item-tags'>
-                                    {
-                                        blog.tags.map((tag, idx) => (
-                                            <span className='blog-item-tags-single' key={idx}>{tag}</span>
-                                        ))
-                                    }
+                                <div className='blog-card__tags'>
+                                    {blog.tags.map((tag, idx) => (
+                                        <span className='tag' key={idx}>{tag}</span>
+                                    ))}
                                 </div>
 
-                                <div className='blog-item-btn'>
-                                    <Link to={`/blog/${blog.id}`} className="read-more-btn">Read More</Link>
+                                <div className='blog-card__footer'>
+                                    <Link to={`/blog/${blog.id}`} className="btn btn--read-more">Read More</Link>
                                 </div>
                             </div>
-                        </Link>)
+                        </Link>
+                    )
                 })}
             </div>
             <Pagination noOfBlogs={blogs.length} paginateHandler={paginateHandler} />
@@ -49,4 +48,4 @@ const BlogList = ({ blogs }) => {
     )
 }
 
-export default BlogList
+export default BlogList;

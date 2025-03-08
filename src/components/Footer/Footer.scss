@@ -1,16 +1,20 @@
-footer {
+@mixin text-style($font-family, $font-weight, $letter-spacing) {
+    font-family: $font-family;
+    font-weight: $font-weight;
+    letter-spacing: $letter-spacing;
+}
+
+.footer {
     background-color: var(--clr-purple);
     padding-top: 24px;
     padding-bottom: 24px;
-}
 
-.footer-content {
-    color: white;
-    text-align: center;
-}
+    &__content {
+        color: white;
+        text-align: center;
+    }
 
-.copyright-text {
-    font-family: var(--font-family-rubik);
-    font-weight: 400;
-    letter-spacing: 1px;
+    &__copyright {
+        @include text-style(var(--font-family-rubik), 400, 1px);
+    }
 }

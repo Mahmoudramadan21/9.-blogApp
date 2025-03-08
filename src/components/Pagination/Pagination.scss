@@ -1,22 +1,25 @@
-.paginate-items {
-    margin: 40px;
-}
-
-.paginate-items,
-.paginate-item {
-    border: none;
+// Mixins
+@mixin flex-center {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right: 10px;
 }
 
-.paginate-item {
-    padding: 10px 15px;
-    border-radius: 5px;
-    font-size: 16px;
-    font-weight: 600;
-    font-family: var(--font-family-rubik);
-    color: white;
-    background-color: var(--clr-ex-blue);
+.pagination {
+    margin: 40px;
+    @include flex-center;
+
+    &__button {
+        @include flex-center;
+        padding: 10px 15px;
+        margin-right: 10px;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        font-family: var(--font-family-rubik);
+        color: white;
+        background-color: var(--clr-ex-blue);
+        cursor: pointer;
+    }
 }

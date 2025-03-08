@@ -9,48 +9,47 @@ import { Link } from "react-router-dom";
 import Loader from '../Loader/Loader';
 
 const SingleBlog = ({ blog, user, comments }) => {
-    const { tempBlogs, singleBlogLoading, singleBlogError } = useBlogsContext();
+    const { tempBlogs, singleBlogLoading } = useBlogsContext();
 
     if (singleBlogLoading) {
-        return (<Loader />);
+        return <Loader />;
     }
 
-
     return (
-        <div className='blog'>
-            <div className="article-container">
-                <div className="article-meta">
+        <div className='single-blog'>
+            <div className="blog-content">
+                <div className="blog-meta">
                     <span>
-                        <BiUser classNameName='text-mid-blue' />
+                        <BiUser className='icon' />
                         {user.firstName} {user.lastName}
                     </span>
                     <span>
-                        <BiCommentDots classNameName='text-mid-blue' />
+                        <BiCommentDots className='icon' />
                         {comments.length} comment(s)
                     </span>
                     <span>
-                        <MdOutlineAddReaction classNameName='text-mid-blue' />
+                        <MdOutlineAddReaction className='icon' />
                         {blog?.reactions?.likes} likes
                     </span>
                 </div>
-                <h1 className="article-title">{blog.title}</h1>
-                <p className="article-text">
-                    {blog.body}
-                </p>
-                <div className="article-tags">
-                    <span id='populor-tags'>Popular Tags:</span>
-                    <span className="tag-items">
-                        {blog && blog.tags && blog.tags.length > 0 ? (
+                <h1 className="blog-title">{blog.title}</h1>
+                <p className="blog-body">{blog.body}</p>
+
+                <div className="blog-tags">
+                    <span className="tags-label">Popular Tags:</span>
+                    <div className="tags-list">
+                        {blog?.tags?.length > 0 ? (
                             blog.tags.map((tag, index) => (
-                                <span className='tag-item' key={index}> {tag}</span>
+                                <span className='tag' key={index}>{tag}</span>
                             ))
                         ) : (
-                            <span>No Tags Available</span>
+                            <span className="no-tags">No Tags Available</span>
                         )}
-                    </span>
+                    </div>
                 </div>
-                <div className="author-info">
-                    <img src={author} alt={`${user.firstName} ${user.lastName}`} className="author-img" />
+
+                <div className="author-section">
+                    <img src={author} alt={`${user.firstName} ${user.lastName}`} className="author-image" />
                     <div className="author-details">
                         <p>{`${user.firstName} ${user.lastName}`}</p>
                         <p>Email: {user.email}</p>
@@ -61,32 +60,30 @@ const SingleBlog = ({ blog, user, comments }) => {
 
                 <div className="comments-section">
                     <h2>Comments</h2>
-                    {comments.map(comment => (<Comment comment={comment} key={comment.id} />))}
+                    {comments.map(comment => (
+                        <Comment comment={comment} key={comment.id} />
+                    ))}
                 </div>
             </div>
-            <div className="recent-news">
-                <h2>Recent News</h2>
-                <div className="news-items">
-                    {
-                        tempBlogs.slice(0, 5).map(blog => {
-                            return (
-                                <div className="news-item" key={blog.id}>
-                                    <Link to={`/blog/${blog.id}`}>
-                                        <h3>{blog?.title}</h3>
-                                    </Link>
 
-                                    <div className='likes'>
-                                        <MdOutlineAddReaction /> &nbsp;
-                                        <span>{blog?.reactions?.likes}</span>
-                                    </div>
-                                </div>
-                            )
-                        })
-                    }
+            <aside className="recent-blogs">
+                <h2>Recent News</h2>
+                <div className="recent-list">
+                    {tempBlogs.slice(0, 5).map(blog => (
+                        <div className="recent-item" key={blog.id}>
+                            <Link to={`/blog/${blog.id}`}>
+                                <h3>{blog?.title}</h3>
+                            </Link>
+                            <div className='likes-count'>
+                                <MdOutlineAddReaction /> &nbsp;
+                                <span>{blog?.reactions?.likes}</span>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            </div>
+            </aside>
         </div>
-    )
+    );
 }
 
-export default SingleBlog
+export default SingleBlog;

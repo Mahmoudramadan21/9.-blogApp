@@ -1,42 +1,46 @@
-import React from 'react';
+import React from "react";
 import "./Navbar.scss";
 import { GiPapers } from "react-icons/gi";
 import { FaBars } from "react-icons/fa";
-import { search_icon } from '../../utils/images';
-import { useSidebarContext } from '../../context/sidebarContext';
-import { Link } from 'react-router-dom';
+import { search_icon } from "../../utils/images";
+import { useSidebarContext } from "../../context/sidebarContext";
+import { Link } from "react-router-dom";
 
 function Navbar() {
     const { openSidebar } = useSidebarContext();
 
     return (
-        <header className="navbar">
-            <div className="container">
-                <div className="logo">
-                    <Link to={`/`}>
-                        <span className="logo">
-                            <GiPapers />
-                        </span>
-                        <span>Blog</span>
-                    </Link>
+        <header className="header">
+            <nav className="navbar container">
+                <div className="navbar__logo">
+                    <Link to="/"><GiPapers />Blog</Link>
                 </div>
-                <nav className="navbar-links">
-                    <ul>
-                        <li><a href="#" className='nav-link'>Home</a></li>
-                        <li><a href="#" className='nav-link'>Blog</a></li>
-                        <li><a href="#" className='nav-link'>About</a></li>
+
+                <div className="navbar__actions">
+                    <ul className="navbar__menu">
+                        <li className="navbar__item">
+                            <Link to="/" className="navbar__link">Home</Link>
+                        </li>
+                        <li className="navbar__item">
+                            <a href="#blogs" className="navbar__link">Blog</a>
+                        </li>
+                        <li className="navbar__item">
+                            <a href="#" className="navbar__link">About</a>
+                        </li>
                     </ul>
-                </nav>
-                <div className="navbar-icons">
-                    <button type='button' className='search-icon'>
+
+                    <button type="button" className="navbar__search">
                         <img src={search_icon} alt="Search" />
                     </button>
-                    <button type='button' className='menu-icon' onClick={() => openSidebar()}>
-                        <FaBars />
-                    </button>
                 </div>
-            </div>
+
+                {/* Mobile Menu Icon */}
+                <button type="button" className="menu-icon" onClick={openSidebar}>
+                    <FaBars />
+                </button>
+            </nav>
         </header>
+
     );
 }
 

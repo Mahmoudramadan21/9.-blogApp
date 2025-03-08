@@ -1,4 +1,17 @@
-.blog-items {
+// Mixins
+@mixin flex($direction: row, $gap: 0px) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    gap: $gap;
+}
+
+@mixin transition($property: all, $duration: 300ms, $timing: ease-in-out) {
+    transition: $property $duration $timing;
+}
+
+// Blog List Container
+.blog-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 10px;
@@ -6,74 +19,71 @@
     cursor: pointer;
 }
 
-.blog-item {
+// Blog Card
+.blog-card {
     background-color: #fff;
     box-shadow: rgba(100, 100, 111, 0.15) 0px 7px 10px 0px;
     border-radius: 6px;
-    padding: 36px 32px 32px 32px;
-    transition: all 300ms ease-in-out;
+    padding: 36px 32px;
     min-height: 355px;
+    @include transition();
+
+    &:hover {
+        background-color: var(--clr-ex-blue);
+        color: #fff;
+        box-shadow: rgba(130, 0, 221, 0.15) 0px 7px 10px 0px;
+
+        .blog-card__btn .btn--read-more {
+            border-color: #fff;
+        }
+
+        .blog-card__tags .tag {
+            background-color: #fff !important;
+            color: var(--clr-purple);
+        }
+    }
 }
 
-.blog-item:hover {
-    background-color: var(--clr-ex-blue);
-    color: #fff;
-    box-shadow: rgba(130, 0, 221, 0.15) 0px 7px 10px 0px;
-}
-
-.blog-item:hover .blog-item-btn .read-more-btn {
-    border-color: #fff;
-}
-
-.blog-item:hover .blog-item-tags-single {
-    background-color: #fff !important;
-    color: var(--clr-purple);
-}
-
-.blog-item-title {
+// Blog Title
+.blog-card__title {
     font-size: 22px;
     font-weight: 600;
-    margin-bottom: 8px;
     line-height: 1.35;
+    margin-bottom: 8px;
 }
 
-.blog-item-reaction {
-    display: flex;
-    align-items: center;
+// Blog Reactions
+.blog-card__reactions {
+    @include flex(row, 12px);
     margin-top: 12px;
 }
 
-.reaction-value {
+.reaction__count {
     font-size: 15px;
     font-weight: 500;
     font-family: var(--font-family-rubik);
-    margin-left: 6px;
-
 }
 
-.blog-item-tags {
+// Blog Tags
+.blog-card__tags {
+    @include flex(row, 10px);
     margin-top: 12px;
-    display: flex;
-    align-items: center;
-    gap: 10px
 }
 
-.blog-item-tags-single {
+.tag {
     font-size: 13px;
+    font-family: var(--font-family-rubik);
     text-transform: uppercase;
     background-color: var(--clr-ex-blue);
     color: #fff;
-    margin: 4px;
     padding: 4px 10px 5px;
     border-radius: 5px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 300ms ease-in-out;
-    font-family: var(--font-family-rubik);
+    @include flex();
+    @include transition();
 }
 
-.read-more-btn {
+// Read More Button
+.btn--read-more {
     font-weight: 400;
     font-family: var(--font-family-rubik);
     display: inline-block;
@@ -81,19 +91,18 @@
     padding: 4px 12px;
     border: 1px solid var(--clr-ex-blue);
     border-radius: 4px;
+    @include transition();
+
+    &:hover {
+        transform: scale(0.95);
+        border-color: #fff;
+    }
 }
 
-.read-more-btn:hover {
-    transform: scale(0.95);
-    transition: all 300ms ease-in-out;
-    border-color: #fff;
-}
-
+// Responsive Design
 @media (max-width: 768px) {
-    .blog-item {
+    .blog-card {
         text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @include flex(column);
     }
 }

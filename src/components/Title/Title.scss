@@ -1,29 +1,50 @@
-.section-title {
+@mixin flex-center($direction: row, $gap: 0) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    justify-content: center;
+    gap: $gap;
+}
+
+@mixin text-style($size, $family, $weight: normal, $spacing: normal) {
+    font-size: $size;
+    font-family: $family;
+    font-weight: $weight;
+    letter-spacing: $spacing;
+}
+
+.title-container {
+    @include flex-center(column, 10px);
     text-align: center;
-    position: relative;
     padding: 90px 0;
+
+    .title-text {
+        @include text-style(40px, var(--font-family-rubik), 500);
+        position: relative;
+
+        &::after {
+            content: "";
+            position: absolute;
+            width: 126px;
+            height: 5px;
+            background-color: var(--clr-dark-blue);
+            left: 50%;
+            bottom: -4px;
+            transform: translateX(-50%)
+        }
+    }
+
+    .title-description {
+        @include text-style(17px, var(--font-family-lora), normal, 1px);
+        max-width: 580px;
+        margin: 32px auto 0;
+    }
 }
 
-.section-title h3 {
-    font-size: 40px;
-    font-family: var(--font-family-rubik);
-    font-weight: 500;
-    position: relative;
-}
+.single-blog-page .title-container {
+    color: var(--clr-light-blue);
 
-.section-title .horz-line {
-    width: 120px;
-    height: 5px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.section-title p {
-    margin-top: 32px;
-    max-width: 580px;
-    margin-right: auto;
-    margin-left: auto;
-    font-family: var(--font-family-lora);
-    font-size: 17px;
-    letter-spacing: 1px;
+    .title-text::after {
+        background-color: var(--clr-light-blue);
+    }
 }

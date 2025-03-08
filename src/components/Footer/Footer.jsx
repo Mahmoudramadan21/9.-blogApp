@@ -1,17 +1,16 @@
 import React from 'react';
-import "./Footer.scss"
-import { Link } from 'react-router-dom';
+import "./Footer.scss";
 
 const Footer = () => {
     return (
-        <footer className='footer py-4 bg-purple'>
+        <footer className='footer'>
             <div className='container'>
-                <div className='footer-content text-white text-center'>
-                    <p className='copyright-text font-rubik fw-4 ls-1'>©2022 CopyRight Example. All rights reserved.</p>
+                <div className='footer__content'>
+                    <p className='footer__copyright'>©2025 CopyRight Example. All rights reserved.</p>
                 </div>
             </div>
         </footer>
-    )
+    );
 }
 
-export default Footer
+export default Footer;

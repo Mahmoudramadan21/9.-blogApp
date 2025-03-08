@@ -1,146 +1,150 @@
-.blog {
-    padding: 80px 0;
+// Mixins
+@mixin flex($direction: row, $align: center, $justify: flex-start, $gap: 0) {
+    display: flex;
+    flex-direction: $direction;
+    align-items: $align;
+    justify-content: $justify;
+    gap: $gap;
+}
+
+@mixin text-style($color, $size, $family: var(--font-family-rubik), $weight: normal) {
+    color: $color;
+    font-size: $size;
+    font-family: $family;
+    font-weight: $weight;
+}
+
+.single-blog {
     display: grid;
     grid-template-columns: 60% 35%;
     justify-content: space-between;
+    padding: 80px 0;
+
+    .blog-content {
+        @include flex(column, flex-start, flex-start, 20px);
+    }
+
+    .blog-meta {
+        @include flex(row, center, flex-start, 20px);
+
+        span {
+            @include flex(row, center, flex-start, 5px);
+            @include text-style(var(--clr-grey), 16px);
+        }
+    }
+
+    .blog-title {
+        @include text-style(var(--clr-dark-blue), 28px, var(--font-family-lora), bold);
+    }
+
+    .blog-body {
+        @include text-style(var(--clr-grey), 17px);
+        line-height: 1.5;
+    }
+
+    .blog-tags {
+        .tags-label {
+            @include text-style(var(--clr-grey), 17px, var(--font-family-lora), bold);
+        }
+
+        .tags-list {
+            @include flex(row, flex-start, flex-start, 5px);
+            flex-wrap: wrap;
+
+            .tag {
+                padding: 4px 10px;
+                margin-top: 7px;
+                background-color: var(--clr-ex-blue);
+                @include text-style(white, 12px, var(--font-family-rubik), 600);
+                text-transform: uppercase;
+                border-radius: 7px;
+            }
+        }
+    }
+
+    .author-section {
+        @include flex(row, center, flex-start, 20px);
+        background-color: #f5f5f5;
+        padding: 25px;
+        width: 100%;
+
+        .author-image {
+            max-height: 130px;
+        }
+
+        .author-details p {
+            @include text-style(var(--clr-grey), 16px);
+            margin-bottom: 4px;
+        }
+    }
+
+    .comments-section {
+        width: 100%;
+
+        h2 {
+            @include text-style(var(--clr-grey), 20px, var(--font-family-lora), bold);
+            margin: 30px 0 20px;
+        }
+    }
+
+    .recent-blogs {
+        h2 {
+            @include text-style(var(--clr-grey), 20px, var(--font-family-lora), bold);
+            margin: 30px 0 20px;
+        }
+
+        .recent-list {
+            border: 1px solid #5658725e;
+
+            .recent-item {
+                @include flex(column, flex-start, flex-start, 5px);
+                padding: 15px;
+                @include text-style(var(--clr-grey), 16px);
+                border-bottom: 1px solid #5658725e;
+
+                &:last-child {
+                    border-bottom: none;
+                }
+            }
+
+            .likes-count {
+                @include flex(row, center);
+            }
+        }
+    }
 }
 
-.article-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.article-container .article-meta {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.article-container .article-meta span {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    font-family: var(--font-family-rubik);
-    color: var(--clr-grey);
-}
-
-.article-container .article-title {
-    font-size: 28px;
-    color: var(--clr-dark-blue);
-    font-family: var(--font-family-lora);
-}
-
-.article-container .article-text {
-    color: var(--clr-grey);
-    line-height: 1.5;
-    font-size: 17px;
-
-}
-
-.article-container .article-tags #populor-tags {
-    color: var(--clr-grey);
-    font-size: 17px;
-    font-family: var(--font-family-lora);
-}
-
-.article-container .article-tags .tag-items {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.article-container .article-tags .tag-item {
-    padding: 4px 10px 5px 7px;
-    margin-top: 7px;
-    margin-left: 5px;
-    background-color: var(--clr-ex-blue);
-    color: white;
-    font-size: 12px;
-    font-weight: 600;
-    text-transform: uppercase;
-    border-radius: 7px;
-    border-radius: 7px;
-    font-family: var(--font-family-rubik);
-}
-
-.author-info {
-    padding: 25px;
-    background-color: #f5f5f5;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-.author-info img {
-    max-height: 130px;
-}
-
-.author-info p {
-    color: var(--clr-grey);
-    margin-bottom: 4px;
-}
-
-.comments-section h2 {
-    color: var(--clr-grey);
-    margin: 30px 0 20px;
-}
-
-/* Start Recent News */
-.recent-news h2 {
-    color: var(--clr-grey);
-    margin: 30px 0 20px;
-}
-
-.recent-news .news-items {
-    border: 1px solid #5658725e;
-}
-
-.recent-news .news-item {
-    padding: 15px;
-    color: var(--clr-grey);
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-}
-
-.recent-news .news-item .likes {
-    display: flex;
-    align-items: center;
-}
-
-.recent-news .news-item:not(:last-child) {
-    border-bottom: 1px solid #5658725e;
-}
-
-/* End Recent News */
-
+// Responsive Styles
 @media (max-width: 992px) {
-    .blog {
+    .single-blog {
         grid-template-columns: auto;
         text-align: center;
-    }
 
-    .article-container .article-meta {
-        flex-direction: column;
-    }
+        .blog-content {
+            align-items: center;
+        }
 
-    .article-container .article-tags .tag-items {
-        justify-content: center;
-    }
+        .blog-meta {
+            flex-direction: column;
+        }
 
-    .author-info {
-        flex-direction: column;
-        text-align: center;
-        font-size: 14px;
-    }
+        .blog-tags .tags-list {
+            justify-content: center;
+        }
 
-    .comments-item {
-        flex-direction: column;
-    }
+        .author-section {
+            flex-direction: column;
+            text-align: center;
+            font-size: 14px;
+        }
 
-    .recent-news .news-item {
-        flex-direction: column;
-        align-items: center;
-    }
+        .comments-section .comment {
+            flex-direction: column;
+        }
 
+        .recent-blogs .recent-item {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
 }
