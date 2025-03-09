@@ -20,6 +20,7 @@
 
     .title-text {
         @include text-style(40px, var(--font-family-rubik), 500);
+        color: var(--clr-dark-blue);
         position: relative;
 
         &::after {

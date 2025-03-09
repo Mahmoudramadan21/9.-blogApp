@@ -18,46 +18,47 @@ const HomePage = () => {
         } else {
             setErrorMsg("Invalid search term ...");
         }
-    }
+    };
 
     const handleSearchSubmit = (e) => {
         e.preventDefault();
         fetchBlogsFromSearch(searchTerm);
-    }
+    };
 
     return (
-        <main>
-            <section className="hero">
-                <div className="hero__content">
+        <main role="main">
+            <section className="hero" aria-label="Hero section">
+                <div className="hero__content container">
                     <h1 className="hero__title">
                         A Beautiful Blog with No Images Required
                     </h1>
 
-                    <form className="search" onSubmit={handleSearchSubmit}>
+                    <form className="search" onSubmit={handleSearchSubmit} aria-label="Search form">
                         <input
                             type="text"
                             className="search__input"
                             placeholder="Search here blog..."
                             onChange={handleSearchInput}
+                            aria-label="Search blog posts"
                         />
-                        <button className="search__button">
+                        <button className="search__button" aria-label="Submit search">
                             <img src={search_icon} alt="Search icon" />
                         </button>
                     </form>
-                    {errorMsg && <span className="search__error">{errorMsg}</span>}
+                    {errorMsg && <span className="search__error" role="alert">{errorMsg}</span>}
                 </div>
             </section>
 
-            <section id="blogs" className="blogs">
+            <section id="blogs" className="blogs" aria-label="Blogs section">
                 <div className="container">
                     <div className="blogs__content">
                         <Title title="Blogs" />
-                        <BlogList blogs={blogs} />
+                        <BlogList blogs={blogs || []} />
                     </div>
                 </div>
             </section>
         </main>
     );
-}
+};
 
 export default HomePage;

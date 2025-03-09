@@ -31,10 +31,10 @@ const SingleBlogPage = () => {
     }, [singleBlog.id]);
 
     return (
-        <div className="single-blog-page">
+        <main className="single-blog-page">
             <section className="blog-header" style={{
                 background: `linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2)), url(${banner_image}) center/cover no-repeat`
-            }}>
+            }} aria-label="Blog header section">
                 <div className="container">
                     <div className="header-content">
                         <Title title="Blog Details" color="#fff" />
@@ -42,14 +42,14 @@ const SingleBlogPage = () => {
                 </div>
             </section>
 
-            <section className="blog-content">
+            <section className="blog-content" aria-label="Blog content section">
                 <div className="container">
                     <div className="content-wrapper">
                         <SingleBlog blog={singleBlog} user={singleUser} comments={commentsByPost} />
                     </div>
                 </div>
             </section>
-        </div>
+        </main>
     );
 }
 

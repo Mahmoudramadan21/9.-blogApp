@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./Navbar.scss";
 import { GiPapers } from "react-icons/gi";
 import { FaBars } from "react-icons/fa";
@@ -9,11 +9,15 @@ import { Link } from "react-router-dom";
 function Navbar() {
     const { openSidebar } = useSidebarContext();
 
+    useEffect(() => {
+        console.log("Hello from navbar")
+    }, [])
+
     return (
-        <header className="header">
-            <nav className="navbar container">
+        <header className="header" role="banner">
+            <nav className="navbar container" aria-label="Main navigation">
                 <div className="navbar__logo">
-                    <Link to="/"><GiPapers />Blog</Link>
+                    <Link to="/" aria-label="Go to homepage"><GiPapers />Blog</Link>
                 </div>
 
                 <div className="navbar__actions">
@@ -29,18 +33,16 @@ function Navbar() {
                         </li>
                     </ul>
 
-                    <button type="button" className="navbar__search">
+                    <button type="button" className="navbar__search" aria-label="Search">
                         <img src={search_icon} alt="Search" />
                     </button>
                 </div>
 
-                {/* Mobile Menu Icon */}
-                <button type="button" className="menu-icon" onClick={openSidebar}>
+                <button type="button" className="menu-icon" onClick={openSidebar} aria-label="Open menu">
                     <FaBars />
                 </button>
             </nav>
         </header>
-
     );
 }
 

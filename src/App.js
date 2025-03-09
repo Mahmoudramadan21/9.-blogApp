@@ -1,20 +1,28 @@
+import React, { lazy } from 'react';
 import './App.scss';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import HomePage from './pages/HomePage/HomePage';
 import Sidebar from './components/Sidebar/Sidebar';
 import Navbar from './components/Navbar/Navbar';
-import SingleBlogPage from './pages/SingleBlogPage/SingleBlogPage';
 import Footer from './components/Footer/Footer';
+import { Suspense } from 'react';
+import { loader } from './components/Loader/Loader';
+import Loader from './components/Loader/Loader';
+
+// Lazy load pages
+const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const SingleBlogPage = lazy(() => import('./pages/SingleBlogPage/SingleBlogPage'));
 
 function App() {
   return (
     <BrowserRouter>
       <Navbar />
       <Sidebar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/blog/:id" element={<SingleBlogPage />} />
-      </Routes>
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/blog/:id" element={<SingleBlogPage />} />
+        </Routes>
+      </Suspense>
       <Footer />
     </BrowserRouter>
   );

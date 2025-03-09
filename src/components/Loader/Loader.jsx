@@ -4,10 +4,10 @@ import "./Loader.scss";
 
 const Loader = () => {
     return (
-        <div className='loader'>
-            <img src={loader} alt="Loading" />
+        <div className='loader' role="status" aria-live="polite">
+            <img src={loader} alt="Loading, please wait..." />
         </div>
     )
 }
 
-export default Loader
+export default Loader;
