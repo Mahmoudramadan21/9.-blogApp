@@ -5,7 +5,6 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
 import { Suspense } from 'react';
-import { loader } from './components/Loader/Loader';
 import Loader from './components/Loader/Loader';
 
 // Lazy load pages

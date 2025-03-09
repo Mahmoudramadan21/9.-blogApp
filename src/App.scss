@@ -2,74 +2,74 @@
 
 // Variables
 :root {
-  // Colors
-  --clr-mid-purple: #A84DE7;
-  --clr-purple: #8200DD;
-  --clr-white: #fff;
-  --clr-black: #000;
-  --clr-dark-blue: #0D1741;
-  --clr-mid-blue: #49009B;
-  --clr-ex-blue: #3F0085;
-  --clr-grey: #565872;
-  --clr-light-blue: #F7FBFF;
-  --clr-danger: #CF271B;
+    // Colors
+    --clr-mid-purple: #A84DE7;
+    --clr-purple: #8200DD;
+    --clr-white: #fff;
+    --clr-black: #000;
+    --clr-dark-blue: #0D1741;
+    --clr-mid-blue: #49009B;
+    --clr-ex-blue: #3F0085;
+    --clr-grey: #565872;
+    --clr-light-blue: #F7FBFF;
+    --clr-danger: #CF271B;
 
-  // Fonts
-  --font-primary: "Rubik", sans-serif;
-  --font-secondary: "Lora", serif;
+    // Fonts
+    --font-primary: "Rubik", sans-serif;
+    --font-secondary: "Lora", serif;
 
-  // Transitions
-  --transition: all 300ms ease-in-out;
+    // Transitions
+    --transition: all 300ms ease-in-out;
 }
 
 :focus-visible {
-  outline: 3px solid var(--clr-dark-blue);
-  outline-offset: 2px;
-  border-radius: 4px;
+    outline: 3px solid var(--clr-dark-blue);
+    outline-offset: 2px;
+    border-radius: 4px;
 }
 
 // Global Styles
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: var(--font-primary);
+    font-family: var(--font-primary);
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 a {
-  text-decoration: none;
-  color: inherit;
+    text-decoration: none;
+    color: inherit;
 }
 
 button {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 // Container
 .container {
-  padding: 0 15px;
-  margin: 0 auto;
+    padding: 0 15px;
+    margin: 0 auto;
 
-  @media (min-width: 767px) {
-    width: 750px;
-  }
+    @media (min-width: 767px) {
+        width: 750px;
+    }
 
-  @media (min-width: 992px) {
-    width: 970px;
-  }
+    @media (min-width: 992px) {
+        width: 970px;
+    }
 
-  @media (min-width: 1200px) {
-    width: 1170px;
-  }
+    @media (min-width: 1200px) {
+        width: 1170px;
+    }
 }
