@@ -11,7 +11,7 @@ A responsive blog application built with React, offering users a seamless experi
 
 - **React**: For building the user interface and managing state.
 - **React Hooks**: To handle state and side effects efficiently.
-- **CSS**: For styling and responsiveness.
+- **SASS/SCSS**: For styling and responsiveness.
 - **JavaScript**: For handling functionality.
 
 ## Installation
